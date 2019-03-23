@@ -1,0 +1,324 @@
+﻿
+@model IEnumerable<Photo_Gallery.Models.PhotoSession>
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KateGalery</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FREEHTML5.CO" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Animate -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="~/Content/flexslider.css">
+    <!-- Icomoon -->
+    <link rel="stylesheet" href="~/Content/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+
+    <!-- Modernizr JS -->
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+   <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+   
+    <div class="overlay_popup"> </div>
+    <div class="popup js-popup-campaign opend-popup">
+        <h3 id="responce">Отправте нам сообщение</h3>
+        <h4 id="loading" style="display:none">Обработка...</h4>
+        <div class="emailForm">
+
+            @using (Ajax.BeginForm("MailPost", new AjaxOptions { UpdateTargetId = "responce", LoadingElementId = "loading" }))
+            {
+                <div class="form-group">
+                    <label for="numberInput">Введите ваш номер телефона</label>
+                    <input name="number" class="form-control" id="numberInput" placeholder="+375..">
+                </div>
+                <div class="form-group">
+                    <label for="nameInput">Введите ваше имя</label>
+                    <input name="name" class="form-control" id="nameInput" placeholder="Елена">
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Введите ваш Email </label>
+                    <input type="email" name="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="textArea">Введите ваше сообщение </label>
+                    <textarea class="form-control" name="message" id="textArea" rows="5"></textarea>
+                </div>
+
+                <button id="sendMessage" class="btn btn-primary btn-lg">Отправить</button>
+            }
+            <button type="button" class="close login-close-popup js-login-close-campaign" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+    </div>
+
+    <div class="main">
+        <div id="fh5co-header">
+            <div class="container">
+                <!-- Mobile Toggle Menu Button -->
+                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                <div id="fh5co-logo">
+                    <p class="transition">@Html.ActionLink("fotografy", "Index", "Home") <span id="spanpoin">.</span></p>
+                </div>
+                <nav id="fh5co-main-nav">
+                    <ul>
+                        <li><a href="#" data-nav-section="home">На главную</a></li>
+                        <li><a href="#" data-nav-section="portfolio">Галерея</a></li>
+                        <li><a href="#" data-nav-section="about">Про меня</a></li>
+                        <li><a href="#" data-nav-section="contact">Контакты</a></li>
+                       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+        <div id="fh5co-main">
+            <div class="fh5co-overlay-mobile"></div>
+            <div id="fh5co-home" class="js-fullheight" data-section="home">
+
+                <div class="flexslider">
+
+                    <div class="fh5co-overlay"></div>
+                    <div class="fh5co-text">
+                        <div class="container">
+                            <div class="row text-center">
+                                <p id="onError">@ViewBag.Text</p>
+                                <h1 class="animate-box">"Какой-то крутой слоган"</h1>
+
+
+
+                                <div class="fh5co-go animate-box">
+                                    <a href="#" class="js-fh5co-next">
+                                        К галерее
+                                        <span><i class="icon-arrow-down2"></i></span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="slides">
+                        <li style="background-image: url(/images/slide_2.jpg);" data-stellar-background-ratio="0.5"></li>
+                        <li style="background-image: url(/images/slide_1.jpg);" data-stellar-background-ratio="0.5"></li>
+                        <li style="background-image: url(/images/slide_3.jpg);" data-stellar-background-ratio="0.5"></li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div id="fh5co-portfolio" data-section="portfolio">
+                <div class="container">
+                    <div class="row r-pb">
+                        <div class="col-md-8 col-md-offset-2 text-center section-heading">
+                            <h2 class="fh5co-section-title animate-box">Галерея</h2>
+                            <p class="fh5co-lead animate-box">"Умная цитатка"</p>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="container">
+                            <div class="row r-pb">
+                                <div class="col-md-8 col-md-offset-2 text-center section-heading">
+                                </div>
+                            
+
+
+                                @{
+                                   
+                                    foreach (Photo_Gallery.Models.PhotoSession ph in Model)
+                                    {
+                                    
+                                        List<string> photos = new List<string>(@Directory.GetFileSystemEntries(ph.PhotoReposURL.ToString()));
+                                        string newStr = photos[0].Replace(@"\", @"/");
+                                        newStr = newStr.Remove(0, newStr.LastIndexOf('/'));
+                                     <div class="photosession_">
+                                    <a href="@Url.Action("ConcretePhotoSession", "Home", new { sessionId = ph.Id })" class="photosession">
+                                        <div class="col-md-4 col-sm-4 col-xs-6 col-xxs-12 animate-box">
+                                            <div class="img-grid">
+                                                <img src="@Url.Content("~/PhotoSessions/" + ph.PhotoSessionName + "/" + newStr)" class="img-responsive">
+                                                <div class="transition">
+                                                    <div>
+                                                        <span class="fh5co-meta">@photos.Count images</span>
+                                                        <h2 class="fh5co-title">@ph.PhotoSessionName</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-md-8 col-md-offset-2 text-center section-heading">
+                            
+                            <p class="animate-box" ><a id="allphotos" class="btn btn-primary btn-lg ">Все фотосессии</a></p>
+                            
+                        </div>
+                    </div>
+
+
+
+                    <div id="fh5co-about" data-section="about">
+                        <div class="container">
+                            <div class="row r-pb">
+                                <div class="col-md-8 col-md-offset-2 text-center section-heading animate-box">
+                                    <h2 class="fh5co-section-title">Про меня</h2>
+                                    <p class="fh5co-lead">"Умная цитатка" </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 animate-box">
+                                    <div class="fh5co-text with-plus">
+                                        <h2>Екатерина бла, бла</h2>
+                                        <span class="fh5co-meta">Кто ты по жизни </span>
+                                        <p>Рассказ про себя</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                    <div id="fh5co-contact" data-section="contact">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2 text-center section-heading">
+                                    <h2 class="fh5co-section-title animate-box">Контакты</h2>
+                                    <p class="fh5co-lead animate-box">"Что-то связанное со слогоном"</p>
+                                    <p class="animate-box">"Можно умную цитатку"</p>
+
+
+                                    <p class="animate-box"><button id="btn_connectUs" class="btn btn-primary btn-lg">Свзаться с нами</button></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div id="fh5co-testimony" style="background-image: url(~/images/slide_3.jpg);" data-stellar-background-ratio="0.5">
+                        <div class="fh5co-overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="flexslider animate-box">
+                                    <ul class="slides">
+                                        <li>
+                                            <blockquote>
+                                                <p>&ldquo;"Цитата 1"&rdquo; <cite>&mdash; "Автор цитаты"</cite></p>
+                                            </blockquote>
+                                        </li>
+                                        <li>
+                                            <blockquote>
+                                                <p>&ldquo;"Цитата 2"&rdquo; <cite>&mdash; "Автор цитаты"</cite></p>
+                                            </blockquote>
+                                        </li>
+                                        <li>
+                                            <blockquote>
+                                                <p>&ldquo;"Цитата 3".&rdquo; <cite>&mdash;"Автор цитаты"</cite></p>
+                                            </blockquote>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fh5co-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 animate-box">
+
+                                </div>
+                                <div class="col-md-6 col-sm-6 animate-box">
+                                    <div class="fh5co-footer-widget">
+                                        <ul class="fh5co-social pull-right">
+
+                                            <li>
+                                                <a href="#"><i class="icon-facebook"></i></a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><i class="icon-google"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon-instagram"></i></a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="fh5co-footer-widget">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- END fh5co-page -->
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Scripts/jquery.waypoints.min.js"></script>
+    <!-- Stellar Parallax -->
+    <script src="~/Scripts/jquery.stellar.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <!-- Main JS -->
+    <script src="~/Scripts/main.js"></script>
+    
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript "></script> 
+
+</body>
+</html>
+
